@@ -57,6 +57,9 @@ In this template we use **spotless** for formatting and styling. We can run it m
 make format
 ```
 
+**RECOMMENDED:** In case you use IntelliJ IDEA use google-java-format plugin for code formatting an
+addition to the maven setup. That way you can reduce the need of using `make format` command.
+
 ### Code conventions
 
 Code conventions another important tool which helps developers to standardize code and improve its readability and
@@ -73,6 +76,23 @@ In this template we use **checkstyle** for checking code conventions. We can run
 ```
 make check-style
 ```
+
+**IMPORTANT:** `spotless` and `checkstyle` can be set up to run automatically during maven build. I have
+intentionally avoided this option to reduce build time, especially for situations when developers run a 
+lot of local builds. Teams using the template to build their own services can make a different choice and
+run these tools on every build by uncommenting defined maven phase in which plugins should run inside of
+`pom.xml` file.
+
+**RECOMMENDED**: Use git `pre-commit` hook to run checkstyle and spotless checks and avoid commits with broken 
+style and formatting. You can set it up by creating `pre-commit` file in location `${PROJECT_HOME}/.git/hooks/` with
+following content:
+```
+#!/bin/sh
+set -e
+
+make check-format check-style
+```
+
 
 ### Bug detection and code correctness
 

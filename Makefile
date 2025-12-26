@@ -8,8 +8,11 @@ hello:
 format:
 	./mvnw spotless:apply
 
+check-format:
+	./mvnw spotless:check
+
 check-style:
-	./mvnw checkstyle:checkstyle
+	./mvnw checkstyle:check
 
 compile:
 	./mvnw clean compile
