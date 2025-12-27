@@ -12,6 +12,46 @@ Project contains following utilities:
 ## Code example
 TODO:
 
+## Code testing
+
+Core activity for building and maintaining good quality software is testing. Usually in software development when
+developers focus on quality they try to follow teh approach of testing pyramid and write:
+- unit tests 
+  - fast test focusing on smallest units, 
+  - largest volume of tests between all test types
+  - bottom of the pyramid
+- component tests 
+  - a bit slower than unit tests, test components without their integrations (mocked) while treating components 
+    like black boxed
+  - typically we write less component than unit tests
+  - layer above unit tests in a test pyramid
+- integration tests 
+  - generally slow tests which test integration between our code and other systems (e.g. connection to DB, connection
+    to messaging system,...)
+  - typically we write relatively small amount of integration tests
+  - layer above component tests and below end-to-emd-tests
+- end-to-end tests (*not covered in the code, added for completeness of test pyramid definition*)
+  - long-running tests which cover testing of functionality in our service or the whole system from one end to the other
+  - typically the category with the least amount of tests
+  - layer on the top od the test pyramid
+
+### Test plugins
+
+In this template I use `surefire` to run unit tests. Unit tests run by default when we run maven test phase or
+any other phase which includes the test phase.
+In order to run component and integration tests `failsafe` is used with two different executions. Maven profiles are
+used to differentiate between running different types of test:
+ - component-tests (runs only component tests)
+ - integration-tests (runs only integration tests)
+ - all-tests (runs all tests, including unit, component and integration tests)
+
+### Naming convention
+
+It is worth to keep in mind that tests in this template use naming convention based on class name suffix:
+ - Test - for unit tests
+ - CT - for component tests
+ - IT - for integration tests
+
 ## Utilities
 
 Utilities help developers to work with the codebase in a convenient way. We can differentiate them depending on the
