@@ -9,3 +9,8 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
+
+service:
+  statistics:
+    executor:
+      threads: 2

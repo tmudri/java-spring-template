@@ -37,6 +37,9 @@
         <skip.unit.tests>false</skip.unit.tests>
         <skip.component.tests>true</skip.component.tests>
         <skip.integration.tests>true</skip.integration.tests>
+
+        <!-- Needed for attaching Mockito agent to Surefire-->
+        <argLine/>
     </properties>
 
     <dependencies>
@@ -172,9 +175,21 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>properties</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
+                    <argLine>@{argLine} -javaagent:${org.mockito:mockito-core:jar}</argLine>
                     <skipTests>${skip.unit.tests}</skipTests>
                     <includes>
                         <include>**/*Test.java</include>
