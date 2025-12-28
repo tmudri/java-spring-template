@@ -10,7 +10,29 @@ Project contains following utilities:
 - Bug detection and code correctness check with ErrorProne
 
 ## Code example
-TODO:
+Provided code example provides following REST endpoints with common base path */api/v1/status*:
+ - */healths*
+   - provides application health status
+ - */ready*
+   - provides application readiness status
+ - */statistics*
+   - provides statistics about how many times are readiness and heath endpoints called separately
+
+Health and readiness endpoints provide very basic functionality which shares current state of the running service.
+These endpoints can also be used as liveness and readiness probes for kubernetes. 
+
+To add more example functionality in core part od the service code, where health and readiness should be checked, 
+we also run statistics about how many times each check is called. This data is maintained in storage, which is in 
+out example in-memory database. It is important to keep in mind that database data will be deleted on every service 
+shutdown. In production environment this kind of that should be persisted in external storage (e.g. database).
+
+It is worth to mention that I did not want to block the core health and readiness check logic with waiting on 
+statistics processing or break it in case the statistics processing breaks. This is why updating statistics is done
+asynchronously.
+
+**TODO:** Add real logic into the readiness check. Add simple call to DS to check if it is available before reporting 
+that application is ready to serve REST endpoints. In this use case this check is not mandatory but having an example
+would show how readiness should work in services which do rely on external storage.
 
 ## Code testing
 
