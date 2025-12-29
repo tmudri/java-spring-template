@@ -32,7 +32,8 @@ asynchronously.
 
 **TODO:** Add real logic into the readiness check. Add simple call to DS to check if it is available before reporting 
 that application is ready to serve REST endpoints. In this use case this check is not mandatory but having an example
-would show how readiness should work in services which do rely on external storage.
+would show how readiness should work in services which do rely on external storage. Also, move count increase logic
+to domain.
 
 ## Code testing
 
@@ -166,7 +167,9 @@ can be found on its web page [Error Prone: Bug Patterns](https://errorprone.info
 
 # Future goals
 - Split code into domain and adapters
+- Define API with OpenAPI in yaml file and use it to generate interface for controller to implement
 - Add usage of PostgreSQL for running code, keep  in-memory DB for component tests
 - Add DB module with flyway migrations for PostgreSQL DB
 - Add docker build
 - Add build definition with GitHub Actions
+- Add sonar scan
