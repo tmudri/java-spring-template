@@ -21,13 +21,13 @@ test:
 	./mvnw clean test
 
 test-component:
-	./mvnw verify -Pcomponent-tests
+	./mvnw clean verify -Pcomponent-tests -Dspring.profiles.active=test
 
 test-integration:
-	./mvnw verify -Pintegration-tests
+	./mvnw verify -Pintegration-tests -Dspring.profiles.active=test
 
 test-all:
-	./mvnw verify -Pall-tests
+	./mvnw verify -Pall-tests -Dspring.profiles.active=test
 
 build:
 	./mvnw clean install

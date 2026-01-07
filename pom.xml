@@ -11,12 +11,20 @@
     <groupId>de.stuttgart.tmudri</groupId>
     <artifactId>java-spring-template</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>java_spring_template</name>
+    <packaging>pom</packaging>
+    <name>java-spring-template</name>
     <description>java-spring-template</description>
     <url/>
+    <modules>
+        <module>adapters</module>
+        <module>use-cases</module>
+        <module>runner</module>
+    </modules>
 
     <properties>
         <java.version>21</java.version>
+
+        <start-class>de.stuttgart.tmudri.templates.java.spring.JavaSpringTemplateApplication</start-class>
 
         <!-- Libraries -->
         <hsqldb.version>2.7.4</hsqldb.version>
@@ -106,18 +114,6 @@
                             <version>${error-prone.version}</version>
                         </path>
                     </annotationProcessorPaths>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
                 </configuration>
             </plugin>
             <plugin>

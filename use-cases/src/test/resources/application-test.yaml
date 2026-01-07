@@ -1,0 +1,4 @@
+service:
+  statistics:
+    executor:
+      threads: 2
