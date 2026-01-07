@@ -20,11 +20,15 @@ compile:
 test:
 	./mvnw clean test
 
+test-architecture:
+	./mvnw test -Parchitecture-tests
+
 test-component:
 	./mvnw verify -Pcomponent-tests
 
 test-integration:
 	./mvnw verify -Pintegration-tests
+
 
 test-all:
 	./mvnw verify -Pall-tests
