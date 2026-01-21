@@ -170,6 +170,5 @@ can be found on its web page [Error Prone: Bug Patterns](https://errorprone.info
 - Define API with OpenAPI in yaml file and use it to generate interface for controller to implement
 - Add usage of PostgreSQL for running code, keep  in-memory DB for component tests
 - Add DB module with flyway migrations for PostgreSQL DB
-- Add docker build
 - Add build definition with GitHub Actions
 - Add sonar scan
