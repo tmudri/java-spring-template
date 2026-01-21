@@ -29,9 +29,17 @@ test-component:
 test-integration:
 	./mvnw verify -Pintegration-tests
 
-
 test-all:
 	./mvnw verify -Pall-tests
 
 build:
 	./mvnw clean install
+
+run:
+	./mvnw spring-boot:run
+
+docker-build:
+	docker build -t tmudri/myapp:latest .
+
+docker-run:
+	docker run --rm -p 8080:8080 --name myapp tmudri/myapp:latest
